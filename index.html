@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Telegram Bot Platform</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Наш JS (defer чтобы дождался DOM) -->
+  <script src="main.js" defer></script>
+</head>
+
+<body class="bg-gray-950 text-gray-100">
+
+  <!-- Language switch -->
+  <div class="fixed top-4 right-4 flex gap-2 text-sm">
+    <button onclick="setLang('ru')" class="px-2 py-1 bg-gray-800 rounded">RU</button>
+    <button onclick="setLang('uk')" class="px-2 py-1 bg-gray-800 rounded">UA</button>
+    <button onclick="setLang('en')" class="px-2 py-1 bg-gray-800 rounded">EN</button>
+  </div>
+
+  <!-- Hero -->
+  <section class="min-h-screen flex flex-col justify-center px-6">
+    <h1 id="title" class="text-4xl font-bold mb-4"></h1>
+    <p id="subtitle" class="text-lg text-gray-400 mb-6"></p>
+
+    <a id="cta" href="#" class="inline-block bg-blue-600 px-6 py-3 rounded-xl font-semibold w-fit"></a>
+  </section>
+
+</body>
+</html>
