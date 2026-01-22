@@ -11,99 +11,120 @@
     tailwind.config = {
       theme: {
         extend: {
-          fontFamily: {
-            sans: ['Inter', 'system-ui', 'sans-serif'],
-          }
+          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+          animation: {
+            fadeInUp: 'fadeInUp 1s ease forwards',
+            gradientBG: 'gradientBG 15s ease infinite'
+          },
+          keyframes: {
+            fadeInUp: {
+              '0%': { opacity: 0, transform: 'translateY(20px)' },
+              '100%': { opacity: 1, transform: 'translateY(0)' }
+            },
+            gradientBG: {
+              '0%,100%': { 'background-position': '0% 50%' },
+              '50%': { 'background-position': '100% 50%' }
+            }
+          },
+          backgroundSize: { '200%': '200% 200%' }
         }
       }
     }
   </script>
 
-  <script src="main.js?v=3" defer></script>
+  <script src="main.js?v=4" defer></script>
 
   <style>
-    /* 3D core animation */
-    .core {
-      transform-style: preserve-3d;
-      animation: float 8s ease-in-out infinite;
+    /* Floating glowing orbs behind content */
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.3;
+      animation: float 12s ease-in-out infinite alternate;
+    }
+    .orb1 { width: 300px; height: 300px; background: #00ffff; top: 10%; left: 5%; animation-delay: 0s; }
+    .orb2 { width: 400px; height: 400px; background: #ff00ff; bottom: 10%; right: 5%; animation-delay: 3s; }
+    .orb3 { width: 250px; height: 250px; background: #00ff99; top: 30%; right: 10%; animation-delay: 5s; }
+    @keyframes float {
+      0% { transform: translateY(0) translateX(0); }
+      50% { transform: translateY(-30px) translateX(20px); }
+      100% { transform: translateY(0) translateX(0); }
     }
 
-    @keyframes float {
-      0%,100% { transform: translateY(0) rotateX(0deg) rotateY(0deg); }
-      50% { transform: translateY(-20px) rotateX(8deg) rotateY(-6deg); }
+    /* Scroll fade-in effect for sections */
+    .fade-section { opacity: 0; transform: translateY(20px); transition: all 0.8s ease-out; }
+    .fade-section.visible { opacity: 1; transform: translateY(0); }
+
+    /* Gradient hero background */
+    .hero-bg {
+      background: linear-gradient(270deg, #0f172a, #1e293b, #0f172a);
+      background-size: 200% 200%;
+      animation: gradientBG 15s ease infinite;
     }
   </style>
 </head>
 
-<body class="bg-black text-gray-100 font-sans overflow-x-hidden">
+<body class="bg-black text-gray-100 font-sans overflow-x-hidden relative">
 
-<!-- BACKGROUND (isolated, cannot cause scroll) -->
-<div class="fixed inset-0 overflow-hidden pointer-events-none">
-  <div class="absolute w-[600px] h-[600px] bg-blue-600/20 rounded-full blur-3xl
-              left-1/2 top-[-200px] -translate-x-1/2"></div>
+  <!-- Floating orbs -->
+  <div class="orb orb1 pointer-events-none"></div>
+  <div class="orb orb2 pointer-events-none"></div>
+  <div class="orb orb3 pointer-events-none"></div>
 
-  <div class="absolute w-[500px] h-[500px] bg-cyan-500/20 rounded-full blur-3xl
-              right-1/2 bottom-[-200px] translate-x-1/2"></div>
-</div>
-
-<!-- Language switch -->
-<div class="fixed top-3 right-3 z-50 backdrop-blur bg-gray-900/70 p-2 rounded-xl border border-gray-700 flex gap-1">
-  <button onclick="setLang('ru')" class="px-2 py-1 text-xs rounded hover:bg-gray-700">RU</button>
-  <button onclick="setLang('uk')" class="px-2 py-1 text-xs rounded hover:bg-gray-700">UA</button>
-  <button onclick="setLang('en')" class="px-2 py-1 text-xs rounded hover:bg-gray-700">EN</button>
-</div>
-
-<!-- HERO -->
-<section class="min-h-screen flex flex-col items-center justify-center text-center px-6 relative z-10">
-
-  <!-- 3D CORE -->
-  <div class="mb-12 perspective-[1200px]">
-    <div class="core relative w-64 h-64 rounded-3xl
-                bg-gradient-to-br from-blue-500/30 to-cyan-400/10
-                border border-blue-400/30 backdrop-blur-xl shadow-2xl">
-
-      <div class="absolute inset-6 rounded-2xl bg-black/40 flex items-center justify-center text-sm text-cyan-300">
-        Telegram Bot Core
-      </div>
-
-      <div class="absolute -inset-px rounded-3xl bg-gradient-to-r from-blue-500 to-cyan-400 opacity-20 blur-xl"></div>
-    </div>
+  <!-- Language switch -->
+  <div class="fixed top-3 right-3 z-50 backdrop-blur bg-gray-900/70 p-2 rounded-xl border border-gray-700 flex gap-1">
+    <button onclick="setLang('ru')" class="px-2 py-1 text-xs rounded hover:bg-gray-700">RU</button>
+    <button onclick="setLang('uk')" class="px-2 py-1 text-xs rounded hover:bg-gray-700">UA</button>
+    <button onclick="setLang('en')" class="px-2 py-1 text-xs rounded hover:bg-gray-700">EN</button>
   </div>
 
-  <h1 id="title" class="text-4xl sm:text-6xl font-extrabold tracking-tight max-w-3xl"></h1>
-  <p id="subtitle" class="mt-4 text-lg sm:text-xl text-gray-400 max-w-2xl"></p>
+  <!-- HERO -->
+  <section class="min-h-screen flex flex-col items-center justify-center text-center px-6 gap-6 hero-bg relative z-10">
+    <h1 id="title" class="text-5xl sm:text-6xl font-extrabold tracking-tight fade-section"></h1>
+    <p id="subtitle" class="mt-4 text-lg sm:text-xl text-gray-400 max-w-2xl fade-section"></p>
 
-  <a id="cta"
-     href="https://t.me/ronkovalski"
-     target="_blank"
-     class="mt-8 inline-flex items-center gap-2 px-8 py-4 rounded-2xl
-            bg-gradient-to-r from-blue-500 to-cyan-400 text-black font-semibold
-            hover:scale-105 transition shadow-lg shadow-blue-500/30">
-  </a>
-</section>
+    <a id="cta"
+       href="https://t.me/ronkovalski"
+       target="_blank"
+       class="mt-8 inline-flex items-center gap-2 px-8 py-4 rounded-2xl
+              bg-gradient-to-r from-blue-500 to-cyan-400 text-black font-semibold
+              hover:scale-105 transition shadow-lg shadow-blue-500/30 fade-section">
+    </a>
+  </section>
 
-<!-- CONTENT SECTIONS (same logic, no overflow) -->
-<section class="px-6 py-20 relative z-10">
-  <h2 id="usecasesTitle" class="text-3xl font-bold mb-12 text-center"></h2>
-  <ul class="max-w-6xl mx-auto grid gap-8 md:grid-cols-3 list-none">
-    <li class="bg-gray-900/70 p-8 rounded-3xl border border-gray-700"> <span id="uc1"></span> </li>
-    <li class="bg-gray-900/70 p-8 rounded-3xl border border-gray-700"> <span id="uc2"></span> </li>
-    <li class="bg-gray-900/70 p-8 rounded-3xl border border-gray-700"> <span id="uc3"></span> </li>
-  </ul>
-</section>
+  <!-- CONTENT SECTIONS -->
+  <section class="px-6 py-20 relative z-10">
+    <h2 id="usecasesTitle" class="text-3xl font-bold mb-12 text-center fade-section"></h2>
+    <ul class="max-w-6xl mx-auto grid gap-8 md:grid-cols-3 list-none">
+      <li class="bg-gray-900/70 p-8 rounded-3xl border border-gray-700 fade-section"><span id="uc1"></span></li>
+      <li class="bg-gray-900/70 p-8 rounded-3xl border border-gray-700 fade-section"><span id="uc2"></span></li>
+      <li class="bg-gray-900/70 p-8 rounded-3xl border border-gray-700 fade-section"><span id="uc3"></span></li>
+    </ul>
+  </section>
 
-<section class="px-6 py-24 flex flex-col items-center text-center gap-6 relative z-10">
-  <h2 id="ctaTitle" class="text-3xl font-bold"></h2>
-  <p id="ctaText" class="text-gray-400 max-w-xl whitespace-pre-line"></p>
+  <section class="px-6 py-24 flex flex-col items-center text-center gap-6 relative z-10">
+    <h2 id="ctaTitle" class="text-3xl font-bold fade-section"></h2>
+    <p id="ctaText" class="text-gray-400 max-w-xl whitespace-pre-line fade-section"></p>
 
-  <a id="ctaBtn"
-     href="https://t.me/ronkovalski"
-     target="_blank"
-     class="mt-4 px-8 py-4 rounded-2xl
-            bg-gradient-to-r from-blue-500 to-cyan-400 text-black font-semibold
-            hover:scale-105 transition shadow-lg shadow-blue-500/30">
-  </a>
-</section>
+    <a id="ctaBtn"
+       href="https://t.me/ronkovalski"
+       target="_blank"
+       class="mt-4 px-8 py-4 rounded-2xl
+              bg-gradient-to-r from-blue-500 to-cyan-400 text-black font-semibold
+              hover:scale-105 transition shadow-lg shadow-blue-500/30 fade-section">
+    </a>
+  </section>
 
+  <script>
+    // Scroll fade-in effect
+    const fadeSections = document.querySelectorAll('.fade-section');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.2 });
+    fadeSections.forEach(el => observer.observe(el));
+  </script>
 </body>
 </html>
