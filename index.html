@@ -7,27 +7,58 @@
 
   <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  
-  <!-- Наш JS (defer чтобы дождался DOM) -->
+
+  <!-- JS -->
   <script src="main.js" defer></script>
 </head>
 
-<body class="bg-gray-950 text-gray-100">
+<body class="bg-gray-950 text-gray-100 font-sans">
 
   <!-- Language switch -->
-  <div class="fixed top-4 right-4 flex gap-2 text-sm">
+  <div class="fixed top-4 right-4 flex gap-2 text-sm z-50">
     <button onclick="setLang('ru')" class="px-2 py-1 bg-gray-800 rounded">RU</button>
     <button onclick="setLang('uk')" class="px-2 py-1 bg-gray-800 rounded">UA</button>
     <button onclick="setLang('en')" class="px-2 py-1 bg-gray-800 rounded">EN</button>
   </div>
 
   <!-- Hero -->
-  <section class="min-h-screen flex flex-col justify-center px-6">
-    <h1 id="title" class="text-4xl font-bold mb-4"></h1>
-    <p id="subtitle" class="text-lg text-gray-400 mb-6"></p>
-
-    <a id="cta" href="#" class="inline-block bg-blue-600 px-6 py-3 rounded-xl font-semibold w-fit"></a>
+  <section class="min-h-screen flex flex-col justify-center px-6 text-center gap-4">
+    <h1 id="title" class="text-4xl sm:text-5xl font-bold"></h1>
+    <p id="subtitle" class="text-lg sm:text-xl text-gray-400 max-w-xl mx-auto"></p>
+    <a id="cta" href="#" class="inline-block bg-blue-600 px-6 py-3 rounded-xl font-semibold hover:bg-blue-700 transition-colors"></a>
   </section>
+
+  <!-- Usecases -->
+  <section class="px-6 py-12">
+    <h2 id="usecasesTitle" class="text-2xl font-bold mb-6 text-center"></h2>
+    <ul class="max-w-4xl mx-auto grid gap-6 md:grid-cols-3 list-none">
+      <li class="bg-gray-900 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow text-center"><span id="uc1"></span></li>
+      <li class="bg-gray-900 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow text-center"><span id="uc2"></span></li>
+      <li class="bg-gray-900 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow text-center"><span id="uc3"></span></li>
+    </ul>
+  </section>
+
+  <!-- Features -->
+  <section class="px-6 py-12 bg-gray-950">
+    <h2 id="featuresTitle" class="text-2xl font-bold mb-6 text-center"></h2>
+    <ul class="max-w-4xl mx-auto grid gap-6 md:grid-cols-2 list-none">
+      <li class="bg-gray-900 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow text-center"><span id="f1"></span></li>
+      <li class="bg-gray-900 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow text-center"><span id="f2"></span></li>
+      <li class="bg-gray-900 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow text-center"><span id="f3"></span></li>
+      <li class="bg-gray-900 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow text-center"><span id="f4"></span></li>
+    </ul>
+  </section>
+
+  <!-- CTA Block -->
+  <section class="px-6 py-12 flex flex-col items-center text-center gap-4">
+    <h2 id="ctaTitle" class="text-2xl font-bold"></h2>
+    <p id="ctaText" class="text-gray-300 max-w-lg"></p>
+    <a id="ctaBtn" href="#" class="bg-blue-600 px-6 py-3 rounded-xl font-semibold hover:bg-blue-700 transition-colors"></a>
+  </section>
+
+  <!-- Eruda -->
+  <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
+  <script>eruda.init();</script>
 
 </body>
 </html>
