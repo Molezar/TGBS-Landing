@@ -3,103 +3,143 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Telegram Bot Platform</title>
+  <title>Telegram Booking Service</title>
 
   <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Custom Tailwind config -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
 
   <!-- JS -->
   <script src="main.js?v=2" defer></script>
 </head>
 
-<body class="bg-gray-950 text-gray-100 font-sans">
+<body class="relative bg-gradient-to-br from-gray-950 via-gray-900 to-black text-gray-100 font-sans overflow-x-hidden">
+
+  <!-- Background glow -->
+  <div class="absolute -top-40 -left-40 w-[500px] h-[500px] bg-blue-600/20 rounded-full blur-3xl"></div>
+  <div class="absolute top-1/3 -right-40 w-[400px] h-[400px] bg-cyan-500/20 rounded-full blur-3xl"></div>
 
   <!-- Language switch -->
-  <div class="fixed top-4 right-4 flex gap-2 text-sm z-50">
-    <button onclick="setLang('ru')" class="px-2 py-1 bg-gray-800 rounded">RU</button>
-    <button onclick="setLang('uk')" class="px-2 py-1 bg-gray-800 rounded">UA</button>
-    <button onclick="setLang('en')" class="px-2 py-1 bg-gray-800 rounded">EN</button>
+  <div class="fixed top-4 right-4 flex gap-2 text-xs z-50 backdrop-blur bg-gray-900/70 p-2 rounded-xl border border-gray-700">
+    <button onclick="setLang('ru')" class="px-3 py-1 rounded-lg hover:bg-gray-700">RU</button>
+    <button onclick="setLang('uk')" class="px-3 py-1 rounded-lg hover:bg-gray-700">UA</button>
+    <button onclick="setLang('en')" class="px-3 py-1 rounded-lg hover:bg-gray-700">EN</button>
   </div>
 
   <!-- Hero -->
-  <section class="min-h-screen flex flex-col justify-center px-6 text-center gap-4">
-    <h1 id="title" class="text-4xl sm:text-5xl font-bold"></h1>
-    <p id="subtitle" class="text-lg sm:text-xl text-gray-400 max-w-xl mx-auto"></p>
+  <section class="min-h-screen flex flex-col justify-center items-center text-center px-6 gap-6 relative z-10">
+    <h1 id="title" class="text-5xl sm:text-6xl font-extrabold tracking-tight"></h1>
+    <p id="subtitle" class="text-lg sm:text-xl text-gray-400 max-w-2xl"></p>
+
     <a id="cta"
        href="https://t.me/ronkovalski"
        target="_blank"
-       class="inline-block bg-blue-600 px-6 py-3 rounded-xl font-semibold hover:bg-blue-700 transition-colors">
+       class="mt-4 inline-flex items-center gap-2 bg-gradient-to-r from-blue-500 to-cyan-500 px-8 py-4 rounded-2xl font-semibold text-black hover:scale-105 transition-transform shadow-lg shadow-blue-500/30">
     </a>
   </section>
 
+  <!-- Screenshots / Carousel (placeholder) -->
+  <section class="px-6 py-16 relative z-10">
+    <div class="max-w-6xl mx-auto">
+      <div class="mb-8 text-center">
+        <h2 class="text-2xl font-bold">Product preview</h2>
+        <p class="text-gray-400 mt-2">Screenshots will be localized for each language</p>
+      </div>
+
+      <div class="relative overflow-hidden rounded-3xl border border-gray-700 bg-gray-900/60 backdrop-blur">
+        <div class="flex gap-6 p-8">
+          <!-- Slide placeholder -->
+          <div class="min-w-[280px] h-[500px] rounded-2xl bg-gradient-to-br from-gray-800 to-gray-700 flex items-center justify-center text-gray-400">
+            Screenshot EN
+          </div>
+          <div class="min-w-[280px] h-[500px] rounded-2xl bg-gradient-to-br from-gray-800 to-gray-700 flex items-center justify-center text-gray-400">
+            Screenshot RU
+          </div>
+          <div class="min-w-[280px] h-[500px] rounded-2xl bg-gradient-to-br from-gray-800 to-gray-700 flex items-center justify-center text-gray-400">
+            Screenshot UA
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Usecases -->
-  <section class="px-6 py-12">
-    <h2 id="usecasesTitle" class="text-2xl font-bold mb-6 text-center"></h2>
-    <ul class="max-w-4xl mx-auto grid gap-6 md:grid-cols-3 list-none">
-      <li class="bg-gray-900 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow text-center">
+  <section class="px-6 py-20 relative z-10">
+    <h2 id="usecasesTitle" class="text-3xl font-bold mb-12 text-center"></h2>
+    <ul class="max-w-6xl mx-auto grid gap-8 md:grid-cols-3 list-none">
+      <li class="bg-gray-900/70 backdrop-blur p-8 rounded-3xl border border-gray-700 hover:border-blue-500 transition">
         <span id="uc1"></span>
       </li>
-      <li class="bg-gray-900 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow text-center">
+      <li class="bg-gray-900/70 backdrop-blur p-8 rounded-3xl border border-gray-700 hover:border-blue-500 transition">
         <span id="uc2"></span>
       </li>
-      <li class="bg-gray-900 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow text-center">
+      <li class="bg-gray-900/70 backdrop-blur p-8 rounded-3xl border border-gray-700 hover:border-blue-500 transition">
         <span id="uc3"></span>
       </li>
     </ul>
   </section>
 
   <!-- Features -->
-  <section class="px-6 py-12 bg-gray-950">
-    <h2 id="featuresTitle" class="text-2xl font-bold mb-6 text-center"></h2>
-    <ul class="max-w-4xl mx-auto grid gap-6 md:grid-cols-2 list-none">
-      <li class="bg-gray-900 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow text-center">
+  <section class="px-6 py-20 relative z-10">
+    <h2 id="featuresTitle" class="text-3xl font-bold mb-12 text-center"></h2>
+    <ul class="max-w-6xl mx-auto grid gap-8 md:grid-cols-2 list-none">
+      <li class="bg-gradient-to-br from-gray-900 to-gray-800 p-8 rounded-3xl border border-gray-700">
         <span id="f1"></span>
       </li>
-      <li class="bg-gray-900 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow text-center">
+      <li class="bg-gradient-to-br from-gray-900 to-gray-800 p-8 rounded-3xl border border-gray-700">
         <span id="f2"></span>
       </li>
-      <li class="bg-gray-900 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow text-center">
+      <li class="bg-gradient-to-br from-gray-900 to-gray-800 p-8 rounded-3xl border border-gray-700">
         <span id="f3"></span>
       </li>
-      <li class="bg-gray-900 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow text-center">
+      <li class="bg-gradient-to-br from-gray-900 to-gray-800 p-8 rounded-3xl border border-gray-700">
         <span id="f4"></span>
       </li>
     </ul>
   </section>
 
   <!-- Why -->
-  <section class="px-6 py-12">
-    <h2 id="whyTitle" class="text-2xl font-bold mb-6 text-center"></h2>
-    <ul class="max-w-4xl mx-auto grid gap-6 md:grid-cols-3 list-none">
-      <li class="bg-gray-900 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow text-center">
+  <section class="px-6 py-20 relative z-10">
+    <h2 id="whyTitle" class="text-3xl font-bold mb-12 text-center"></h2>
+    <ul class="max-w-6xl mx-auto grid gap-8 md:grid-cols-3 list-none">
+      <li class="bg-gray-900/70 backdrop-blur p-8 rounded-3xl border border-gray-700">
         <h3 id="why1Title" class="font-semibold mb-2"></h3>
         <p id="why1Text" class="text-gray-400"></p>
       </li>
-      <li class="bg-gray-900 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow text-center">
+      <li class="bg-gray-900/70 backdrop-blur p-8 rounded-3xl border border-gray-700">
         <h3 id="why2Title" class="font-semibold mb-2"></h3>
         <p id="why2Text" class="text-gray-400"></p>
       </li>
-      <li class="bg-gray-900 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow text-center">
+      <li class="bg-gray-900/70 backdrop-blur p-8 rounded-3xl border border-gray-700">
         <h3 id="why3Title" class="font-semibold mb-2"></h3>
         <p id="why3Text" class="text-gray-400"></p>
       </li>
     </ul>
   </section>
 
-  <!-- CTA Block -->
-  <section class="px-6 py-12 flex flex-col items-center text-center gap-4">
-    <h2 id="ctaTitle" class="text-2xl font-bold"></h2>
-    <p id="ctaText" class="text-gray-300 max-w-lg whitespace-pre-line"></p>
+  <!-- CTA -->
+  <section class="px-6 py-24 flex flex-col items-center text-center gap-6 relative z-10">
+    <h2 id="ctaTitle" class="text-3xl font-bold"></h2>
+    <p id="ctaText" class="text-gray-400 max-w-xl whitespace-pre-line"></p>
+
     <a id="ctaBtn"
        href="https://t.me/ronkovalski"
        target="_blank"
-       class="bg-blue-600 px-6 py-3 rounded-xl font-semibold hover:bg-blue-700 transition-colors">
+       class="mt-4 inline-flex items-center gap-2 bg-gradient-to-r from-blue-500 to-cyan-500 px-8 py-4 rounded-2xl font-semibold text-black hover:scale-105 transition-transform shadow-lg shadow-blue-500/30">
     </a>
   </section>
-
-  <!-- Eruda -->
-  <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
-  <script>eruda.init();</script>
 
 </body>
 </html>
