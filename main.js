@@ -1,62 +1,88 @@
 const texts = {
   en: {
-    title: "Telegram Bot Management Platform",
-    subtitle: "One platform to build, manage and scale Telegram bots for real businesses.",
+    title: "Telegram Booking Service",
+    subtitle: "A unified platform for creating and managing Telegram bots for service bookings.",
     cta: "Contact",
 
     usecasesTitle: "Who is this for?",
-    uc1: "Service providers managing multiple client bots",
-    uc2: "Developers tired of copy-paste bot code",
-    uc3: "Teams needing control, scaling and stability",
+    uc1: "Beauty salons, barbershops, spas and massage centers",
+    uc2: "Clinics, private doctors, medical centers and horse riding clubs",
+    uc3: "Any business offering services that can be booked",
 
     featuresTitle: "What you get",
-    f1: "Centralized control panel for all bots",
-    f2: "Scalable architecture (aiogram-based)",
-    f3: "Modular logic and service providers",
-    f4: "Built for long-term growth, not hacks",
+    f1: "A Telegram bot for your business. One business = one bot.",
+    f2: "An admin panel for you and a client interface for your customers.",
+    f3: "Flexible bot configuration tailored to your business needs.",
+    f4: "Booking management with client notifications and reminders.",
 
-    ctaTitle: "Build bots like a product",
-    ctaText: "Stop reinventing bots. Start scaling them.",
+    whyTitle: "Why do I need this?",
+    why1Title: "Save your time",
+    why1Text: "The bot accepts booking requests automatically. You only confirm or decline them.",
+    why2Title: "Client reminders",
+    why2Text: "The bot reminds clients about upcoming services and bookings.",
+    why3Title: "Client broadcasts",
+    why3Text: "Notify all your clients about promotions, events, or important changes.",
+
+    ctaTitle: "In development",
+    ctaText: "• Google Calendar synchronization\n• Service payment system",
     ctaBtn: "Message me on Telegram"
   },
+
   ru: {
-    title: "Платформа управления Telegram-ботами",
-    subtitle: "Единая система для создания, управления и масштабирования ботов.",
+    title: "Telegram Booking Service",
+    subtitle: "Единая система для создания и управления Telegram-ботами бронирования услуг.",
     cta: "Связаться",
 
     usecasesTitle: "Для кого это?",
-    uc1: "Сервис-провайдеры с несколькими ботами",
-    uc2: "Разработчики, уставшие от копипасты",
-    uc3: "Команды, которым важны контроль и масштаб",
+    uc1: "Салоны красоты, барбершопы, спа и массажные центры",
+    uc2: "Клиники, частные врачи, медицинские центры и конные клубы",
+    uc3: "Любой бизнес, где есть услуги, которые можно забронировать",
 
     featuresTitle: "Что вы получаете",
-    f1: "Единая панель управления ботами",
-    f2: "Масштабируемая архитектура (aiogram)",
-    f3: "Модульная логика и сервис-провайдеры",
-    f4: "Платформа, а не одноразовый бот",
+    f1: "Telegram-бот для вашего бизнеса. Один бизнес = один бот!",
+    f2: "Админ-панель для вас и клиентская панель для ваших заказчиков.",
+    f3: "Гибкая система настройки бота под нюансы вашего бизнеса.",
+    f4: "Система уведомлений, напоминаний и учёт бронирований.",
 
-    ctaTitle: "Делайте ботов как продукт",
-    ctaText: "Хватит костылей. Начните масштабироваться.",
+    whyTitle: "Зачем мне это?",
+    why1Title: "Экономия вашего времени",
+    why1Text: "Бот принимает заявки автоматически, а вы только подтверждаете или отклоняете их.",
+    why2Title: "Напоминания клиентам",
+    why2Text: "Бот напоминает клиентам о предстоящей услуге или бронировании.",
+    why3Title: "Рассылка клиентам",
+    why3Text: "Уведомляйте всех своих клиентов об акциях, событиях или изменениях.",
+
+    ctaTitle: "В разработке",
+    ctaText: "• Синхронизация с вашим Google Календарем\n• Система оплаты услуг",
     ctaBtn: "Написать в Telegram"
   },
+
   uk: {
-    title: "Платформа керування Telegram-ботами",
-    subtitle: "Єдина система для створення та масштабування ботів.",
+    title: "Telegram Booking Service",
+    subtitle: "Єдина система для створення та керування Telegram-ботами бронювання послуг.",
     cta: "Звʼязатися",
 
     usecasesTitle: "Для кого це?",
-    uc1: "Сервіс-провайдери з кількома ботами",
-    uc2: "Розробники, втомлені від копіпасту",
-    uc3: "Команди, яким потрібен контроль",
+    uc1: "Салони краси, барбершопи, спа та масажні центри",
+    uc2: "Клініки, приватні лікарі, медичні центри та кінні клуби",
+    uc3: "Будь-який бізнес, де є послуги, які можна забронювати",
 
-    featuresTitle: "Можливості платформи",
-    f1: "Єдина панель керування ботами",
-    f2: "Масштабована архітектура (aiogram)",
-    f3: "Модульна логіка та провайдери",
-    f4: "Рішення для росту, а не хаки",
+    featuresTitle: "Що ви отримуєте",
+    f1: "Telegram-бот для вашого бізнесу. Один бізнес = один бот!",
+    f2: "Адмін-панель для вас і клієнтська панель для ваших замовників.",
+    f3: "Гнучка система налаштування бота під особливості вашого бізнесу.",
+    f4: "Система сповіщень, нагадувань та облік бронювань.",
 
-    ctaTitle: "Створюйте боти правильно",
-    ctaText: "Не з нуля. Не по одному.",
+    whyTitle: "Навіщо мені це?",
+    why1Title: "Економія вашого часу",
+    why1Text: "Бот автоматично приймає заявки, а ви лише підтверджуєте або відхиляєте їх.",
+    why2Title: "Нагадування клієнтам",
+    why2Text: "Бот нагадує клієнтам про майбутню послугу або бронювання.",
+    why3Title: "Розсилка клієнтам",
+    why3Text: "Повідомляйте клієнтів про акції, події або важливі зміни.",
+
+    ctaTitle: "У розробці",
+    ctaText: "• Синхронізація з вашим Google Календарем\n• Система оплати послуг",
     ctaBtn: "Написати в Telegram"
   }
 };
@@ -68,5 +94,4 @@ function setLang(lang) {
   });
 }
 
-// DOM готов
 document.addEventListener("DOMContentLoaded", () => setLang("en"));
