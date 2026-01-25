@@ -1,0 +1,12 @@
+# Trash / temp
+.trashed-*
+.DS_Store
+Thumbs.db
+
+# Editor / OS
+*.log
+*.tmp
+*.swp
+*.swo
+*.bak
+*~
