@@ -92,6 +92,22 @@ function setLang(lang) {
     const el = document.getElementById(key);
     if (el) el.innerText = texts[lang][key];
   });
+
+  setScreens(lang);
+}
+
+function setScreens(lang) {
+  const screens = [
+    document.getElementById("screen1"),
+    document.getElementById("screen2"),
+    document.getElementById("screen3")
+  ];
+
+  screens.forEach((img, i) => {
+    if (img) {
+      img.src = `screens/${lang}/${i + 1}.png`;
+    }
+  });
 }
 
 document.addEventListener("DOMContentLoaded", () => setLang("en"));
