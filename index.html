@@ -6,10 +6,9 @@
   <title>Telegram Booking Service</title>
 
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="main.js?v=6" defer></script>
+  <script src="main.js?v=7" defer></script>
 
   <style>
-    /* Fade-in (SAFE for mobile) */
     .fade-section {
       opacity: 0;
       transform: translateY(24px);
@@ -24,13 +23,13 @@
 
 <body class="bg-black text-gray-100 font-sans overflow-x-hidden relative">
 
-<!-- BACKGROUND GLOW -->
+<!-- BACKGROUND -->
 <div class="fixed inset-0 pointer-events-none overflow-hidden">
   <div class="absolute w-[420px] h-[420px] bg-blue-500/25 rounded-full blur-3xl -top-40 left-1/2 -translate-x-1/2"></div>
   <div class="absolute w-[360px] h-[360px] bg-cyan-400/20 rounded-full blur-3xl bottom-[-200px] right-1/2 translate-x-1/2"></div>
 </div>
 
-<!-- Language switch -->
+<!-- LANG -->
 <div class="fixed top-3 right-3 z-50 backdrop-blur bg-gray-900/70 p-2 rounded-xl border border-gray-700 flex gap-1">
   <button onclick="setLang('ru')" class="px-2 py-1 text-xs rounded hover:bg-gray-700">RU</button>
   <button onclick="setLang('uk')" class="px-2 py-1 text-xs rounded hover:bg-gray-700">UA</button>
@@ -39,95 +38,55 @@
 
 <!-- HERO -->
 <section class="min-h-screen flex flex-col items-center justify-center text-center px-6 relative z-10">
-  <h1 id="title" class="text-4xl sm:text-6xl font-extrabold tracking-tight max-w-3xl fade-section"></h1>
+  <h1 id="title" class="text-4xl sm:text-6xl font-extrabold max-w-3xl fade-section"></h1>
   <p id="subtitle" class="mt-4 text-lg sm:text-xl text-gray-400 max-w-2xl fade-section"></p>
 
   <a id="cta"
      href="https://t.me/ronkovalski"
      target="_blank"
-     class="mt-8 inline-flex items-center px-8 py-4 rounded-2xl
-            bg-gradient-to-r from-blue-500 to-cyan-400
-            text-black font-semibold
-            shadow-lg shadow-blue-500/30
-            active:scale-95 transition fade-section">
+     class="mt-8 px-8 py-4 rounded-2xl bg-gradient-to-r from-blue-500 to-cyan-400
+            text-black font-semibold shadow-lg shadow-blue-500/30 active:scale-95 transition fade-section">
   </a>
 </section>
 
-<section id="screenshots" class="py-20 bg-black">
+<!-- SCREENSHOTS -->
+<section id="screenshots" class="py-20 relative z-10">
   <div class="max-w-7xl mx-auto px-4">
-    
-    <h2 class="text-3xl md:text-4xl font-bold text-center text-white mb-4">
-      Screenshots
-    </h2>
 
-    <p class="text-center text-gray-400 mb-12">
-      How the bot looks in real usage
-    </p>
+    <h2 class="text-3xl font-bold text-center mb-4">Screenshots</h2>
+    <p class="text-center text-gray-400 mb-12">How the bot looks in real usage</p>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      
-      <!-- Screenshot 1 -->
-      <div class="rounded-2xl overflow-hidden border border-white/10 bg-zinc-900">
-        <img id="screen1" src="screens/en/1.PNG" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" 
-        />
+    <!-- MOBILE CAROUSEL -->
+    <div class="relative sm:hidden overflow-hidden rounded-3xl border border-white/10">
+      <div id="screensTrack" class="flex transition-transform duration-300 ease-out">
+        <img id="screen1" class="w-full shrink-0" />
+        <img id="screen2" class="w-full shrink-0" />
+        <img id="screen3" class="w-full shrink-0" />
       </div>
 
-      <!-- Screenshot 2 -->
-      <div class="rounded-2xl overflow-hidden border border-white/10 bg-zinc-900">
-        <img id="screen2" src="screens/en/2.PNG" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" 
-        />
-      </div>
-
-      <!-- Screenshot 3 -->
-      <div class="rounded-2xl overflow-hidden border border-white/10 bg-zinc-900">
-        <img id="screen3" src="screens/en/3.PNG" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" 
-        />
-      </div>
-
+      <button onclick="prevScreen()"
+        class="absolute left-3 top-1/2 -translate-y-1/2 bg-black/60 px-3 py-2 rounded-full">‹</button>
+      <button onclick="nextScreen()"
+        class="absolute right-3 top-1/2 -translate-y-1/2 bg-black/60 px-3 py-2 rounded-full">›</button>
     </div>
+
+    <!-- DESKTOP GRID -->
+    <div class="hidden sm:grid grid-cols-3 gap-6">
+      <img id="screen1-desktop" class="rounded-3xl border border-white/10" />
+      <img id="screen2-desktop" class="rounded-3xl border border-white/10" />
+      <img id="screen3-desktop" class="rounded-3xl border border-white/10" />
+    </div>
+
   </div>
 </section>
 
 <!-- USECASES -->
 <section class="px-6 py-20 relative z-10">
   <h2 id="usecasesTitle" class="text-3xl font-bold mb-12 text-center fade-section"></h2>
-
-  <ul class="max-w-6xl mx-auto grid gap-8 md:grid-cols-3 list-none">
+  <ul class="max-w-6xl mx-auto grid gap-8 md:grid-cols-3">
     <li class="bg-gray-900/70 p-8 rounded-3xl border border-gray-700 fade-section"><span id="uc1"></span></li>
     <li class="bg-gray-900/70 p-8 rounded-3xl border border-gray-700 fade-section"><span id="uc2"></span></li>
     <li class="bg-gray-900/70 p-8 rounded-3xl border border-gray-700 fade-section"><span id="uc3"></span></li>
-  </ul>
-</section>
-
-<!-- FEATURES -->
-<section class="px-6 py-20 relative z-10">
-  <h2 id="featuresTitle" class="text-3xl font-bold mb-12 text-center fade-section"></h2>
-
-  <ul class="max-w-6xl mx-auto grid gap-8 md:grid-cols-2 list-none">
-    <li class="bg-gray-900/70 p-8 rounded-3xl border border-gray-700 fade-section"><span id="f1"></span></li>
-    <li class="bg-gray-900/70 p-8 rounded-3xl border border-gray-700 fade-section"><span id="f2"></span></li>
-    <li class="bg-gray-900/70 p-8 rounded-3xl border border-gray-700 fade-section"><span id="f3"></span></li>
-    <li class="bg-gray-900/70 p-8 rounded-3xl border border-gray-700 fade-section"><span id="f4"></span></li>
-  </ul>
-</section>
-
-<!-- WHY -->
-<section class="px-6 py-20 relative z-10">
-  <h2 id="whyTitle" class="text-3xl font-bold mb-12 text-center fade-section"></h2>
-
-  <ul class="max-w-6xl mx-auto grid gap-8 md:grid-cols-3 list-none">
-    <li class="bg-gray-900/70 p-8 rounded-3xl border border-gray-700 fade-section">
-      <h3 id="why1Title" class="font-semibold mb-2"></h3>
-      <p id="why1Text" class="text-gray-400"></p>
-    </li>
-    <li class="bg-gray-900/70 p-8 rounded-3xl border border-gray-700 fade-section">
-      <h3 id="why2Title" class="font-semibold mb-2"></h3>
-      <p id="why2Text" class="text-gray-400"></p>
-    </li>
-    <li class="bg-gray-900/70 p-8 rounded-3xl border border-gray-700 fade-section">
-      <h3 id="why3Title" class="font-semibold mb-2"></h3>
-      <p id="why3Text" class="text-gray-400"></p>
-    </li>
   </ul>
 </section>
 
@@ -135,19 +94,14 @@
 <section class="px-6 py-24 flex flex-col items-center text-center gap-6 relative z-10">
   <h2 id="ctaTitle" class="text-3xl font-bold fade-section"></h2>
   <p id="ctaText" class="text-gray-400 max-w-xl whitespace-pre-line fade-section"></p>
-
   <a id="ctaBtn"
      href="https://t.me/ronkovalski"
      target="_blank"
-     class="mt-4 px-8 py-4 rounded-2xl
-            bg-gradient-to-r from-blue-500 to-cyan-400
-            text-black font-semibold
-            shadow-lg shadow-blue-500/30
-            active:scale-95 transition fade-section">
+     class="mt-4 px-8 py-4 rounded-2xl bg-gradient-to-r from-blue-500 to-cyan-400
+            text-black font-semibold shadow-lg shadow-blue-500/30 active:scale-95 transition fade-section">
   </a>
 </section>
 
-<!-- Fade observer -->
 <script>
   const observer = new IntersectionObserver(entries => {
     entries.forEach(e => e.isIntersecting && e.target.classList.add('visible'));
