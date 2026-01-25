@@ -105,7 +105,7 @@ function setScreens(lang) {
 
   screens.forEach((img, i) => {
     if (img) {
-      img.src = `screens/${lang}/${i + 1}.png`;
+      img.src = `screens/${lang}/${i + 1}.PNG`;
     }
   });
 }
