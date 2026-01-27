@@ -5,7 +5,7 @@ const texts = {
   en: {
     title: "Telegram Booking Service",
     subtitle: "A unified platform for creating and managing Telegram bots for service bookings.",
-    cta: "Contact",
+    cta: "Order free demo",
 
     usecasesTitle: "Who is this for?",
     uc1: "Beauty salons, barbershops, spas and massage centers",
@@ -20,7 +20,7 @@ const texts = {
   ru: {
     title: "Telegram Booking Service",
     subtitle: "Единая система для создания и управления Telegram-ботами бронирования услуг.",
-    cta: "Связаться",
+    cta: "Заказать демо бесплатно",
 
     usecasesTitle: "Для кого это?",
     uc1: "Салоны красоты, барбершопы, спа и массажные центры",
@@ -35,7 +35,7 @@ const texts = {
   uk: {
     title: "Telegram Booking Service",
     subtitle: "Єдина система для створення та керування Telegram-ботами бронювання послуг.",
-    cta: "Звʼязатися",
+    cta: "Замовити демо безкоштовно",
 
     usecasesTitle: "Для кого це?",
     uc1: "Салони краси, барбершопи, спа та масажні центри",

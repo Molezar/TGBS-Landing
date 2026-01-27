@@ -18,6 +18,25 @@
       opacity: 1;
       transform: translateY(0);
     }
+  
+    /* Screenshot scaling */
+    .screen-img {
+      transform-origin: center top;
+    }
+  
+    @media (max-width: 639px) {
+      /* mobile */
+      .screen-img {
+        transform: scale(0.7);
+      }
+    }
+  
+    @media (min-width: 640px) {
+      /* desktop */
+      .screen-img {
+        transform: scale(0.5);
+      }
+    }
   </style>
 </head>
 
@@ -53,15 +72,12 @@
 <section id="screenshots" class="py-20 relative z-10">
   <div class="max-w-7xl mx-auto px-4">
 
-    <h2 class="text-3xl font-bold text-center mb-4">Screenshots</h2>
-    <p class="text-center text-gray-400 mb-12">How the bot looks in real usage</p>
-
     <!-- MOBILE CAROUSEL -->
     <div class="relative sm:hidden overflow-hidden rounded-3xl border border-white/10">
       <div id="screensTrack" class="flex transition-transform duration-300 ease-out">
-        <img id="screen1" class="w-full shrink-0" />
-        <img id="screen2" class="w-full shrink-0" />
-        <img id="screen3" class="w-full shrink-0" />
+        <img id="screen1" class="w-full shrink-0 screen-img" />
+        <img id="screen2" class="w-full shrink-0 screen-img" />
+        <img id="screen3" class="w-full shrink-0 screen-img" />
       </div>
 
       <button onclick="prevScreen()"
@@ -72,9 +88,9 @@
 
     <!-- DESKTOP GRID -->
     <div class="hidden sm:grid grid-cols-3 gap-6">
-      <img id="screen1-desktop" class="rounded-3xl border border-white/10" />
-      <img id="screen2-desktop" class="rounded-3xl border border-white/10" />
-      <img id="screen3-desktop" class="rounded-3xl border border-white/10" />
+      <img id="screen1-desktop" class="rounded-3xl border border-white/10 screen-img" />
+      <img id="screen2-desktop" class="rounded-3xl border border-white/10 screen-img" />
+      <img id="screen3-desktop" class="rounded-3xl border border-white/10 screen-img" />
     </div>
 
   </div>
