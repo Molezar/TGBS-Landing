@@ -18,21 +18,35 @@
       opacity: 1;
       transform: translateY(0);
     }
-  
+
     /* Screenshot scaling */
     .screen-img {
       transform-origin: center top;
     }
-  
+
+    /* MOBILE CAROUSEL CENTERING */
+    .mobile-carousel {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 300px; /* регулируем высоту при уменьшенном масштабе */
+    }
+
+    /* DESKTOP GRID CENTERING */
+    .desktop-grid {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1.5rem; /* отступы между скринами */
+    }
+
     @media (max-width: 639px) {
-      /* mobile */
       .screen-img {
         transform: scale(0.7);
       }
     }
-  
+
     @media (min-width: 640px) {
-      /* desktop */
       .screen-img {
         transform: scale(0.5);
       }
@@ -73,7 +87,7 @@
   <div class="max-w-7xl mx-auto px-4">
 
     <!-- MOBILE CAROUSEL -->
-    <div class="relative sm:hidden overflow-hidden rounded-3xl border border-white/10">
+    <div class="relative sm:hidden overflow-hidden rounded-3xl border border-white/10 mobile-carousel">
       <div id="screensTrack" class="flex transition-transform duration-300 ease-out">
         <img id="screen1" class="w-full shrink-0 screen-img" />
         <img id="screen2" class="w-full shrink-0 screen-img" />
@@ -87,7 +101,7 @@
     </div>
 
     <!-- DESKTOP GRID -->
-    <div class="hidden sm:grid grid-cols-3 gap-6">
+    <div class="hidden sm:flex desktop-grid">
       <img id="screen1-desktop" class="rounded-3xl border border-white/10 screen-img" />
       <img id="screen2-desktop" class="rounded-3xl border border-white/10 screen-img" />
       <img id="screen3-desktop" class="rounded-3xl border border-white/10 screen-img" />
@@ -105,8 +119,6 @@
     <li class="bg-gray-900/70 p-8 rounded-3xl border border-gray-700 fade-section"><span id="uc3"></span></li>
   </ul>
 </section>
-
-<!-- ...остальной код без изменений... -->
 
 <!-- FEATURES -->
 <section class="px-6 py-20 relative z-10">
