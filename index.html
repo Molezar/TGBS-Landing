@@ -20,24 +20,17 @@
     }
 
     /* Screenshot scaling */
+    .screen-img-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      min-height: 300px; /* высота контейнера на мобилке */
+    }
+
     .screen-img {
-      transform-origin: center top;
-    }
-
-    /* MOBILE CAROUSEL CENTERING */
-    .mobile-carousel {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 300px; /* регулируем высоту при уменьшенном масштабе */
-    }
-
-    /* DESKTOP GRID CENTERING */
-    .desktop-grid {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 1.5rem; /* отступы между скринами */
+      display: block;
+      transform-origin: center center;
     }
 
     @media (max-width: 639px) {
@@ -47,6 +40,9 @@
     }
 
     @media (min-width: 640px) {
+      .screen-img-wrapper {
+        min-height: auto; /* на десктопе авто */
+      }
       .screen-img {
         transform: scale(0.5);
       }
@@ -87,11 +83,13 @@
   <div class="max-w-7xl mx-auto px-4">
 
     <!-- MOBILE CAROUSEL -->
-    <div class="relative sm:hidden overflow-hidden rounded-3xl border border-white/10 mobile-carousel">
-      <div id="screensTrack" class="flex transition-transform duration-300 ease-out">
-        <img id="screen1" class="w-full shrink-0 screen-img" />
-        <img id="screen2" class="w-full shrink-0 screen-img" />
-        <img id="screen3" class="w-full shrink-0 screen-img" />
+    <div class="relative sm:hidden overflow-hidden rounded-3xl border border-white/10">
+      <div class="screen-img-wrapper">
+        <div id="screensTrack" class="flex transition-transform duration-300 ease-out">
+          <img id="screen1" class="screen-img" />
+          <img id="screen2" class="screen-img" />
+          <img id="screen3" class="screen-img" />
+        </div>
       </div>
 
       <button onclick="prevScreen()"
@@ -101,10 +99,16 @@
     </div>
 
     <!-- DESKTOP GRID -->
-    <div class="hidden sm:flex desktop-grid">
-      <img id="screen1-desktop" class="rounded-3xl border border-white/10 screen-img" />
-      <img id="screen2-desktop" class="rounded-3xl border border-white/10 screen-img" />
-      <img id="screen3-desktop" class="rounded-3xl border border-white/10 screen-img" />
+    <div class="hidden sm:flex justify-center gap-6">
+      <div class="screen-img-wrapper">
+        <img id="screen1-desktop" class="screen-img rounded-3xl border border-white/10" />
+      </div>
+      <div class="screen-img-wrapper">
+        <img id="screen2-desktop" class="screen-img rounded-3xl border border-white/10" />
+      </div>
+      <div class="screen-img-wrapper">
+        <img id="screen3-desktop" class="screen-img rounded-3xl border border-white/10" />
+      </div>
     </div>
 
   </div>
